@@ -10,7 +10,22 @@
 
     <script>
         fetch('http://localhost:3000/get')
-        .then(res => res.json())
+        .then(res => {
+            // 获取 Lai-Header响应头
+            const laiHeader = res.headers.get('Lai-Header');
+            console.log('Lai-Header:', laiHeader);
+            
+            // 获取响应体数据
+            return res.text();
+        })
+        .then(data => console.log('Response data:', data))
+        .catch(err => console.log('Error:', err));
+
+        // 发送DELETE
+        fetch('http://localhost:3000/delete', {
+            method: 'DELETE'
+        })
+        .then(res => res.text())
         .then(data => console.log(data))
         .catch(err => console.log(err));
     </script>

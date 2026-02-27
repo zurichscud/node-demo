@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>127.0.0.1:3000</h1>
+
+    <script>
+      const sse = new EventSource("http://localhost:3000/sse");
+      sse.addEventListener("say", (event) => {
+        console.log(event.data);
+      });
+      sse.addEventListener('error', (event) => {
+        console.log('err',event);
+      });
+    </script>
+  </body>
+</html>
