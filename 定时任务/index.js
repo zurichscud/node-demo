@@ -1,0 +1,48 @@
+const schedule = require('node-schedule');
+const yaml = require('js-yaml');
+const fs = require('fs');
+const path = require('path');
+const request = require('request');
+
+const config = yaml.load(fs.readFileSync(path.join(__dirname, 'config.yaml'), 'utf8'));
+const url = config.check_url + '?aid=' + config.aid + '&uuid=' + config.uuid + '&spider=0&msToken=' + config.msToken + '&a_bogus=' + config.a_bogus;
+
+let i = 1
+const job = schedule.scheduleJob('*/5 * * * * *', () => {
+    console.log(`第${i++}次尝试`, new Date().toISOString())
+    request({
+        url: url,
+        method: 'POST',
+        headers: {
+            'accept': '*/*',
+            'accept-language': 'zh-CN,zh;q=0.9',
+            'cache-control': 'no-cache',
+            'content-type': 'application/json',
+            'origin': 'https://juejin.cn',
+            'pragma': 'no-cache',
+            'referer': config.url,
+            'sec-ch-ua': '"Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"',
+            'sec-ch-ua-mobile': '?0',
+            'sec-ch-ua-platform': '"macOS"',
+            'sec-fetch-dest': 'empty',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-site': 'same-site',
+            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36',
+            'x-secsdk-csrf-token': config.csrf_token,
+            'cookie': config.cookie
+        },
+        body: JSON.stringify({})
+    }, (err, res, body) => {
+        if (err) {
+            console.log('请求错误:', err)
+        } else {
+            console.log('[ status ] >', res.statusCode)
+            if (res.statusCode == 200) {
+                console.log('Result：', body)
+            } else {
+                console.log('响应内容:', body)
+            }
+        }
+    });
+
+});
