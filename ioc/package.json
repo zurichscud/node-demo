@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "dev": "nodemon main.ts",
-    "tsx": "tsx watch main.ts"
+    "dev": "tsx watch main.ts",
+    "nodemon": "nodemon main.ts"
   },
   "keywords": [],
   "author": "",

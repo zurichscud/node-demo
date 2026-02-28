@@ -1,4 +1,4 @@
-import type { Engine } from "./Engine.js";
+import type { Engine } from "./Engine";
 import { inject, injectable } from "inversify";
 
 @injectable()

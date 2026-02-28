@@ -1,7 +1,6 @@
 {
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
-    "module": "esnext",
     "moduleResolution": "bundler",
     "target": "esnext",
     "types": [],
@@ -15,7 +14,6 @@
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "esModuleInterop": true,
     "skipLibCheck": true,
     "experimentalDecorators": true, //开启装饰器
     "emitDecoratorMetadata": true //开启元数据发射
