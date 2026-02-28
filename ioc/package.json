@@ -1,8 +1,9 @@
 {
-  "name": "node-demo",
+  "name": "ioc",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,14 +12,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.29.2",
   "dependencies": {
-    "express": "^5.2.1",
-    "http-proxy-middleware": "^3.0.5",
     "inversify": "^7.11.0",
-    "js-yaml": "^4.1.1",
-    "log4js": "^6.9.1",
-    "mime": "^2.6.0",
-    "mysql2": "^3.18.2",
-    "nodemailer": "^8.0.1",
     "reflect-metadata": "^0.2.2"
   }
 }
